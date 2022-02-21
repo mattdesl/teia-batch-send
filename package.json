@@ -1,0 +1,42 @@
+{
+  "name": "teia-batch-send",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./index.html",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "author": {
+    "name": "Matt DesLauriers",
+    "email": "dave.des@gmail.com",
+    "url": "https://github.com/mattdesl"
+  },
+  "dependencies": {
+    "@airgap/beacon-sdk": "^2.3.9",
+    "@taquito/beacon-wallet": "^11.2.0",
+    "@taquito/taquito": "^11.2.0",
+    "axios": "^0.24.0",
+    "buffer": "^6.0.3",
+    "events": "^3.3.0",
+    "stream-browserify": "^3.0.0",
+    "vite-plugin-singlefile": "^0.6.3"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^1.0.0-next.30",
+    "svelte": "^3.44.0",
+    "vite": "^2.7.2"
+  },
+  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mattdesl/teia-batch-send.git"
+  },
+  "homepage": "https://github.com/mattdesl/teia-batch-send",
+  "bugs": {
+    "url": "https://github.com/mattdesl/teia-batch-send/issues"
+  }
+}
