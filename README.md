@@ -4,6 +4,8 @@ A dApp to batch send multiple [Teia](http://teia.art/) tokens in one transaction
 
 > :warning: This is untested software. Use the dApp at your own risk.
 
+![screenshot](./images/screen.png)
+
 ## Concept
 
 This is a rough proof-of-concept of a decentralized app (dApp) for use in a blockchain context, in this case Tezos. See [this thread](https://twitter.com/mattdesl/status/1495322443610791940) for the basic idea. As this dApp is entirely contained in a single IPFS-hosted HTML file, it should provide the following benefits:
