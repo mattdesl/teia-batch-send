@@ -6,7 +6,7 @@ import { defaultEventCallbacks } from "@airgap/beacon-sdk";
 const network = "mainnet";
 const NODE_URL = `https://${network}.api.tez.ie`;
 
-// From https://batch.xtz.tools/
+// Some contract addresses from https://batch.xtz.tools/
 const contracts = [
   { address: "KT1RJ6PbjHpwc3M5rw5s2Nbmefwbuwbdxton", name: "hic et nunc" },
   { address: "KT1KEa8z6vWXDJrVqtMrAeDVzsvxat3kHaCE", name: "fxhash" },
@@ -103,43 +103,6 @@ function requestPermissions() {
   return promise;
 }
 
-// export function getWallet() {
-//   let oldWallet = wallet;
-
-//   if (!wallet && window[curWalletGlobal]) {
-//     console.log("~~ Re-using old wallet");
-//     wallet = window[curWalletGlobal];
-//   }
-
-//   if (!wallet) {
-//     console.log("Loading wallet");
-//     wallet = new BeaconWallet({
-//       name: "BatchTransfer",
-//       eventHandlers: {
-//         PAIR_INIT: {
-//           handler: (data) => {
-//             return defaultEventCallbacks.PAIR_INIT({
-//               ...data,
-//               abortedHandler: () => {
-//                 data.abortedHandler();
-//                 return abortedHandler();
-//               },
-//             });
-//           },
-//         },
-//       },
-//       preferredNetwork: network,
-//     });
-//   }
-//   window[curWalletGlobal] = wallet;
-//   Tezos.setWalletProvider(wallet);
-//   if (wallet !== oldWallet) {
-//     console.log("Wallet changed");
-//     state.update((d) => ({ ...d, wallet }));
-//   }
-//   return wallet;
-// }
-
 export async function connect() {
   const wallet = getWallet();
   let account = await wallet.client.getActiveAccount();
@@ -172,8 +135,6 @@ export async function transfer(tokens, targetAddress, opt = {}) {
   const contractAddress = "KT1RJ6PbjHpwc3M5rw5s2Nbmefwbuwbdxton";
   console.log("Getting contract...", contractAddress);
 
-  // event({ event: "preparing" });
-
   const contract = await Tezos.wallet.at(contractAddress);
   console.log("Contract:", contract);
 
@@ -196,8 +157,6 @@ export async function transfer(tokens, targetAddress, opt = {}) {
   const txConfirmations = 1;
   const txConfirmationTimeout = txConfirmations * (2 * 60);
 
-  // event({ event: "sending" });
-
   const operation = await contract.methods
     .transfer(params)
     .send({ amount: 0, mutez: true });
@@ -205,15 +164,7 @@ export async function transfer(tokens, targetAddress, opt = {}) {
   event({ event: "confirming", hash: operation.opHash });
   console.log(operation);
   console.log(operation.opHash);
-  // console.log(
-  //   "Waiting for " +
-  //     txConfirmations +
-  //     " transaction confirmations with a timeout of " +
-  //     txConfirmationTimeout +
-  //     " seconds, see https://tzstats.com/" +
-  //     operation.opHash
-  // );
-
+  
   await operation.confirmation(1);
   event({ event: "done", hash: operation.opHash });
 }
