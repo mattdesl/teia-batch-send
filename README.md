@@ -6,7 +6,13 @@ A dApp to batch send multiple [Teia](http://teia.art/) tokens in one transaction
 
 ## Concept
 
-This is a rough proof-of-concept of a decentralized app (dApp) for use in a blockchain context, in this case Tezos. 
+This is a rough proof-of-concept of a decentralized app (dApp) for use in a blockchain context, in this case Tezos. See [this thread](https://twitter.com/mattdesl/status/1495322443610791940) for the basic idea. As this dApp is entirely contained in a single IPFS-hosted HTML file, it should provide the following benefits:
+
+- DDoS resistance; users can bookmark and pin the IPFS hash locally to ensure the application is reliably accessible.
+- immutable and "ossified", in that a change to the frontend would produce a new addressable hash
+- public and verifiable update mechanism: to get the "latest version" of the site, see the [teia-batch-send.utils.tez](https://app.tezos.domains/domain/teia-batch-send.utils.tez) domain name. Changes to this domain's contents will be public (easily analyzable), verifiable, and previous iterations will remain intact on the chain.
+
+This is not a perfectly decentralized application, as it still relies on an indexer and trusted RPC nodes.
 
 ## IPFS
 
