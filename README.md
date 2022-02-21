@@ -4,7 +4,7 @@ A dApp to batch send multiple [Teia](http://teia.art/) tokens in one transaction
 
 > :warning: This is untested software. Use the dApp at your own risk.
 
-![screenshot](./images/screen.png)
+<img src="./images/screen.png" width="50%" />
 
 ## Concept
 
